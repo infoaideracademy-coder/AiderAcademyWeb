@@ -1,0 +1,147 @@
+.pillars-section-container-main {
+  width: 100%;
+  background-color: $color-white;
+  padding: 60px 0;
+
+  @media (min-width: 1024px) {
+    padding: 80px 0;
+  }
+}
+
+.pillars-section-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+// --- Header Row ---
+
+.header-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+  }
+}
+
+.header-left {
+  flex: 1;
+  max-width: 520px;
+}
+
+.pillars-headline {
+  font-size: 28px;
+  font-weight: 600;
+  color: $color-black;
+  line-height: 1.3;
+  margin: 0;
+
+  @media (min-width: 768px) {
+    font-size: 35px;
+  }
+
+  .accent {
+    color: $color-cta-blue;
+  }
+}
+
+.header-right {
+  flex: 1;
+  max-width: 560px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+
+  @media (min-width: 768px) {
+    padding-top: 6px;
+  }
+}
+
+.pillars-description {
+  font-size: 16px;
+  line-height: 26px;
+  color: $color-hash-grey-2;
+  text-align: left;
+  margin: 0;
+
+  @media (min-width: 768px) {
+    text-align: right;
+  }
+}
+
+// --- Cards Grid ---
+
+.cards-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pillar-card {
+  background-color: $color-white;
+  border: 1px solid $color-stroke-grey;
+  border-radius: 15px;
+  padding: 23px 18px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+  }
+}
+
+.pillar-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(49, 194, 225, 0.09);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-bottom: 70px; // matches the ~93px gap from top of card to title in Figma
+
+  img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
+}
+
+.pillar-card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: $color-black;
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.pillar-card-description {
+  font-size: 14px;
+  line-height: 22px;
+  color: $color-hash-grey-2;
+  margin: 0;
+}
+
+// Mobile — reduce icon bottom margin on small screens
+@media (max-width: 639px) {
+  .pillar-icon-wrapper {
+    margin-bottom: 32px;
+  }
+}

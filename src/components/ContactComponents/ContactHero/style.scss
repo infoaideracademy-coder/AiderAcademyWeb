@@ -1,0 +1,101 @@
+.contact-hero-main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-hero-card {
+  position: relative;
+  width: 100%;
+  min-height: 357px;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #8d6565;
+}
+
+.contact-hero-card__image,
+.contact-hero-card__overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.contact-hero-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-hero-card__overlay {
+  background-image: linear-gradient(
+    269deg,
+    rgba(0, 0, 0, 0) 27.24%,
+    rgba(0, 0, 0, 0.8) 99.62%
+  );
+}
+
+.contact-hero-card__content {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 515px);
+  min-height: 357px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 32px 40px;
+}
+
+.contact-hero-card__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 17px;
+  border-radius: 10000px;
+  background-color: #ecf9fc;
+  font-family: "Poppins", $font-family-primary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: $color-cta-blue;
+}
+
+.contact-hero-card__title {
+  margin: 0;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: $color-white;
+}
+
+.contact-hero-card__description {
+  margin: 0;
+  width: min(100%, 461px);
+  font-family: "Poppins", $font-family-primary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: $color-white;
+}
+
+@media (max-width: 767px) {
+  .contact-hero-card {
+    min-height: 320px;
+  }
+
+  .contact-hero-card__content {
+    width: 100%;
+    min-height: 320px;
+    padding: 24px;
+  }
+
+  .contact-hero-card__title {
+    font-size: 30px;
+  }
+
+  .contact-hero-card__description {
+    font-size: 15px;
+    line-height: 24px;
+  }
+}

@@ -1,0 +1,124 @@
+.contact-faq-main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-faq-container.container {
+  width: min(100%, 806px);
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+}
+
+.contact-faq__heading {
+  width: min(100%, 515px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  text-align: center;
+}
+
+.contact-faq__title {
+  margin: 0;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: $color-black;
+
+  span {
+    color: $color-cta-blue;
+  }
+}
+
+.contact-faq__description {
+  margin: 0;
+  font-family: "Poppins", $font-family-primary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #666666;
+}
+
+.contact-faq__items {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+
+.contact-faq__item {
+  border: 1px solid #e3e5e6;
+  border-radius: 8px;
+  background-color: $color-white;
+  overflow: hidden;
+}
+
+.contact-faq__trigger {
+  width: 100%;
+  min-height: 61px;
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: $color-black;
+  text-align: left;
+  cursor: pointer;
+}
+
+.contact-faq__chevron {
+  width: 12px;
+  height: 8px;
+  object-fit: contain;
+}
+
+.contact-faq__panel {
+  height: 0;
+  overflow: hidden;
+
+  .contact-faq__panel-inner {
+    padding: 0 28px 20px;
+  }
+
+  p {
+    margin: 0;
+    font-family: "Poppins", $font-family-primary;
+    font-size: 15px;
+    line-height: 24px;
+    color: #666666;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-faq-container.container {
+    gap: 32px;
+  }
+
+  .contact-faq__title {
+    font-size: 30px;
+  }
+
+  .contact-faq__description {
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .contact-faq__trigger {
+    padding: 16px 18px;
+    font-size: 16px;
+  }
+
+  .contact-faq__panel {
+    .contact-faq__panel-inner {
+      padding: 0 18px 18px;
+    }
+  }
+}

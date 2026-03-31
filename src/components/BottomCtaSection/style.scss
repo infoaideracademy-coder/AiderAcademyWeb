@@ -1,0 +1,128 @@
+.bottom-cta-section-container {
+  width: 100%;
+  background-color: $color-white;
+  padding: 24px 0 40px;
+}
+
+.bottom-cta-panel {
+  position: relative;
+  min-height: 326px;
+  border-radius: 34px;
+  background-color: $color-cta-blue;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('/images/bottom-cta-grid.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.bottom-cta-panel__cutout {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: $color-white;
+  z-index: 2;
+}
+
+.bottom-cta-panel__cutout--bottom-left {
+  left: -80px;
+  bottom: -56px;
+}
+
+.bottom-cta-panel__cutout--top-right {
+  top: -80px;
+  right: -80px;
+}
+
+.bottom-cta-panel__content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 652px;
+  margin: 0 auto;
+  padding: 63px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.bottom-cta-panel__title {
+  margin: 0;
+  max-width: 470px;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: $color-white;
+}
+
+.bottom-cta-panel__title-accent {
+  color: $color-black;
+}
+
+.bottom-cta-panel__description {
+  margin: 27px 0 0;
+  max-width: 652px;
+  font-family: "Poppins", $font-family-primary;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 26px;
+  color: $color-white;
+}
+
+.bottom-cta-panel__actions {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 11px;
+}
+
+.bottom-cta-panel__button {
+  padding: 11px 22px;
+  font-family: $font-family-primary;
+  font-size: 17px;
+  line-height: 24px;
+}
+
+@media (max-width: 767px) {
+  .bottom-cta-section-container {
+    padding: 20px 0 32px;
+  }
+
+  .bottom-cta-panel {
+    min-height: auto;
+  }
+
+  .bottom-cta-panel__content {
+    padding: 48px 20px 36px;
+  }
+
+  .bottom-cta-panel__title {
+    font-size: 30px;
+  }
+
+  .bottom-cta-panel__description {
+    margin-top: 20px;
+    line-height: 24px;
+  }
+
+  .bottom-cta-panel__actions {
+    margin-top: 24px;
+  }
+
+  .bottom-cta-panel__button {
+    width: 100%;
+  }
+
+  .bottom-cta-panel__cutout--bottom-left {
+    left: -100px;
+    bottom: -90px;
+  }
+
+  .bottom-cta-panel__cutout--top-right {
+    top: -100px;
+    right: -100px;
+  }
+}

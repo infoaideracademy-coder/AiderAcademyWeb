@@ -1,0 +1,57 @@
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 17px;
+  border: none;
+  border-radius: 10000px;
+  background-color: $color-cta-blue;
+  font-family: "Poppins", $font-family-primary;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 26px;
+  color: $color-white;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.primary-button--primary {
+  background-color: $color-cta-blue;
+  color: $color-white;
+
+  &:hover {
+    background-color: #24b7d7;
+    transform: translateY(-1px);
+  }
+}
+
+.primary-button--light {
+  background-color: #ecf9fc;
+  color: $color-cta-blue;
+
+  &:hover {
+    background-color: #daf4fb;
+    transform: translateY(-1px);
+  }
+}
+
+.primary-button--dark {
+  background-color: $color-black;
+  color: $color-white;
+
+  &:hover {
+    background-color: #111111;
+    transform: translateY(-1px);
+  }
+}
+
+.primary-button--white {
+  background-color: $color-white;
+  color: $color-hash-black;
+  border: 1px solid $color-stroke-grey;
+
+  &:hover {
+    background-color: #f8f8f8;
+    transform: translateY(-1px);
+  }
+}

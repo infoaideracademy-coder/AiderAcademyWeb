@@ -1,0 +1,123 @@
+$about-logo-item-width: 180px;
+$about-logo-gap: 56px;
+$about-logo-count: 13;
+$about-logo-track-width: ($about-logo-item-width + $about-logo-gap) * $about-logo-count;
+$about-logo-animation-duration: 26s;
+
+@keyframes about-logo-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.about-logo-scroll-section-main {
+  width: 100%;
+  background-color: $color-white;
+  padding: 58px 0 70px;
+  overflow: hidden;
+}
+
+.about-logo-scroll-section-header {
+  width: 100%;
+  margin-bottom: 42px;
+}
+
+.about-logo-scroll-section-header__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.about-logo-scroll-section__title {
+  margin: 0;
+  max-width: 760px;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 1.18;
+}
+
+.about-logo-scroll-section__title-text {
+  color: $color-black;
+}
+
+.about-logo-scroll-section__title-accent {
+  color: $color-cta-blue;
+}
+
+.about-logo-scroll-section__description {
+  margin: 0;
+  max-width: 830px;
+  font-family: "Poppins", $font-family-primary;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #666666;
+}
+
+.about-logo-scroll-section-track-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.about-logo-scroll-section-track {
+  display: flex;
+  align-items: center;
+  gap: $about-logo-gap;
+  width: max-content;
+  animation: about-logo-scroll $about-logo-animation-duration linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+.about-logo-scroll-section-item {
+  width: $about-logo-item-width;
+  min-width: $about-logo-item-width;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-logo-scroll-section-main {
+    padding: 44px 0 54px;
+  }
+
+  .about-logo-scroll-section-header {
+    margin-bottom: 34px;
+  }
+
+  .about-logo-scroll-section__title {
+    font-size: 30px;
+  }
+
+  .about-logo-scroll-section__description {
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .about-logo-scroll-section-track {
+    gap: 36px;
+    animation-duration: 18s;
+  }
+
+  .about-logo-scroll-section-item {
+    width: 140px;
+    min-width: 140px;
+    height: 92px;
+  }
+}

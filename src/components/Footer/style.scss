@@ -1,0 +1,129 @@
+.footer-section-container-main {
+  width: 100%;
+  background-color: $color-white;
+  border: 1px solid $color-cloud-grey;
+}
+
+.footer-section-container {
+  padding: 47px 0 46px;
+}
+
+.footer-section__top {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr 1fr 1fr;
+  gap: 32px 40px;
+  align-items: start;
+}
+
+.footer-section__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-section__logo {
+  width: 205px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.footer-section__socials {
+  margin-top: 25px;
+  display: inline-flex;
+  align-items: center;
+  gap: 21px;
+}
+
+.footer-section__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+}
+
+.footer-section__column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.footer-section__column--courses {
+  max-width: 162px;
+}
+
+.footer-section__column--contact {
+  max-width: 198px;
+}
+
+.footer-section__column-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: $color-carbon-black;
+}
+
+.footer-section__column-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-section__link,
+.footer-section__text {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: $color-slate-grey;
+}
+
+.footer-section__copyright {
+  margin: 52px auto 0;
+  max-width: 617px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: $color-hash-grey-2;
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  .footer-section-container {
+    padding: 40px 0;
+  }
+
+  .footer-section__top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-section__copyright {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 639px) {
+  .footer-section__top {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-section__brand {
+    align-items: center;
+  }
+
+  .footer-section__column,
+  .footer-section__column--courses,
+  .footer-section__column--contact {
+    max-width: 100%;
+  }
+
+  .footer-section__column-title,
+  .footer-section__column-links {
+    text-align: center;
+  }
+}

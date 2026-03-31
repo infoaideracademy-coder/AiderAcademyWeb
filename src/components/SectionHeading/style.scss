@@ -1,0 +1,114 @@
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  text-align: center;
+}
+
+.section-heading__body {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+}
+
+.section-heading__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 17px;
+  border-radius: 10000px;
+  background-color: #ecf9fc;
+  font-family: "Poppins", $font-family-primary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: $color-cta-blue;
+}
+
+.section-heading__title {
+  margin: 0;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: $color-black;
+}
+
+.section-heading__accent {
+  color: $color-cta-blue;
+}
+
+.section-heading__description {
+  max-width: 461px;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Poppins", $font-family-primary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #666666;
+  text-align: center;
+}
+
+.section-heading__side-description {
+  margin: 0;
+  font-family: "Poppins", $font-family-primary;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #666666;
+}
+
+.section-heading--split {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.section-heading--split .section-heading__body {
+  display: grid;
+  grid-template-columns: minmax(0, 470px) minmax(0, 515px);
+  align-items: start;
+  justify-content: space-between;
+  gap: 24px 40px;
+}
+
+.section-heading--split .section-heading__description {
+  display: none;
+}
+
+.section-heading--split .section-heading__side-description {
+  justify-self: end;
+  max-width: 515px;
+  text-align: right;
+}
+
+@media (max-width: 767px) {
+  .section-heading__eyebrow {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 5px 15px;
+  }
+
+  .section-heading__title {
+    font-size: 30px;
+  }
+
+  .section-heading__description {
+    max-width: 100%;
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .section-heading--split .section-heading__body {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading--split .section-heading__side-description {
+    justify-self: start;
+    max-width: 100%;
+    text-align: left;
+    line-height: 24px;
+  }
+}

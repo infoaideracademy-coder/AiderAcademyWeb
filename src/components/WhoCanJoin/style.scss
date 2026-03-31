@@ -1,0 +1,117 @@
+.who-can-join-container-main {
+  width: 100%;
+  background-color: $color-white;
+  padding: 27px 0 40px;
+}
+
+.who-can-join-container {
+  display: flex;
+  flex-direction: column;
+  gap: 43px;
+}
+
+.who-can-join__heading {
+  width: 100%;
+}
+
+.who-can-join-card {
+  min-height: 203px;
+  padding: 23px 18px 22px;
+  border: 1px solid $color-stroke-grey;
+  border-radius: 15px;
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.who-can-join-card__icon-wrap {
+  width: 50px;
+  height: 50px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 49px;
+    height: 49px;
+    object-fit: contain;
+  }
+}
+
+.who-can-join-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.who-can-join-card__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: $color-black;
+}
+
+.who-can-join-card__description {
+  margin: 0;
+  font-family: "Poppins", $font-family-primary;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #666666;
+}
+
+.feature-items-container-who-can-join {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 23px 19px;
+}
+
+.who-can-join__note {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  align-self: center;
+
+  img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  p {
+    margin: 0;
+    font-family: "Poppins", $font-family-primary;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #666666;
+    text-align: center;
+  }
+}
+
+@media (min-width: 900px) {
+  .feature-items-container-who-can-join {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .who-can-join-container-main {
+    padding: 24px 0 32px;
+  }
+
+  .who-can-join-container {
+    gap: 32px;
+  }
+
+  .who-can-join-card {
+    min-height: auto;
+    gap: 24px;
+  }
+}

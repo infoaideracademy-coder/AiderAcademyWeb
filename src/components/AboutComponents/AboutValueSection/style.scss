@@ -1,0 +1,130 @@
+.about-value-section-main {
+  width: 100%;
+  background-color: $color-white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 27px 0 42px;
+}
+
+.about-value-section-container.container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 32px;
+}
+
+.about-value-section-container--reverse .about-value-section__content {
+  order: 2;
+}
+
+.about-value-section-container--reverse .about-value-section__media {
+  order: 1;
+}
+
+.about-value-section__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  min-width: 0;
+}
+
+.about-value-section__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 17px;
+  border-radius: 10000px;
+  background-color: #ecf9fc;
+  font-family: "Poppins", $font-family-primary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: $color-cta-blue;
+}
+
+.about-value-section__copy {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.about-value-section__title {
+  margin: 0;
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.about-value-section__title-text {
+  color: $color-black;
+}
+
+.about-value-section__title-accent {
+  color: $color-cta-blue;
+}
+
+.about-value-section__description {
+  margin: 0;
+  font-family: "Poppins", $font-family-primary;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #666666;
+}
+
+.about-value-section__media {
+  min-width: 0;
+  width: 100%;
+}
+
+.about-value-section__image-frame {
+  width: 100%;
+  aspect-ratio: 572 / 394;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #e5a3a3;
+}
+
+.about-value-section__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1023px) {
+  .about-value-section-container.container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .about-value-section-container--reverse .about-value-section__content,
+  .about-value-section-container--reverse .about-value-section__media {
+    order: initial;
+  }
+
+  .about-value-section__image-frame {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-value-section-main {
+    padding: 20px 0 36px;
+  }
+
+  .about-value-section__title {
+    font-size: 30px;
+  }
+
+  .about-value-section__description {
+    line-height: 24px;
+  }
+
+  .about-value-section__image-frame {
+    height: 280px;
+  }
+}

@@ -1,0 +1,253 @@
+.about-hero-container-main {
+  position: relative;
+  width: 100%;
+  background-color: $color-white;
+  overflow: hidden;
+}
+
+.about-hero-grid-bg {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-hero-grid-bg__row {
+  display: flex;
+  align-items: center;
+  width: max-content;
+
+  img {
+    width: 668px;
+    height: 668px;
+    max-width: none;
+    object-fit: cover;
+  }
+}
+
+.about-hero-grid-bg__row:first-child img {
+  opacity: 0.12;
+}
+
+.about-hero-grid-bg__row:last-child {
+  margin-top: -71px;
+}
+
+.about-hero-grid-bg__row:last-child img {
+  opacity: 0.17;
+}
+
+.about-hero-top {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 11px;
+}
+
+.about-hero-container.container {
+  display: grid;
+  grid-template-columns: minmax(0, 515px) minmax(0, 551px);
+  justify-content: space-between;
+  align-items: start;
+}
+
+.about-hero-copy {
+  position: relative;
+  padding-top: 52px;
+}
+
+.about-hero-copy__triangle {
+  position: absolute;
+  top: 0;
+  left: 19px;
+  width: 56px;
+  height: 56px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.about-hero-copy__title {
+  margin: 0;
+  font-size: 45px;
+  font-weight: 600;
+  line-height: 1.22;
+}
+
+.about-hero-copy__title-line {
+  display: block;
+}
+
+.about-hero-copy__title-black {
+  color: $color-black;
+}
+
+.about-hero-copy__title-accent {
+  color: $color-cta-blue;
+}
+
+.about-hero-copy__flower {
+  margin-top: 10px;
+  margin-left: 161px;
+  width: 35px;
+  height: 35px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.about-hero-actions {
+  padding-top: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.about-hero-actions__description {
+  margin: 0;
+  width: 100%;
+  font-family: "Poppins", $font-family-primary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #666666;
+  text-align: right;
+}
+
+.about-hero-actions__buttons {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.about-hero-actions__button {
+  min-height: 46px;
+  padding: 11px 22px;
+  border-radius: 10000px;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.about-hero-actions__button--primary {
+  border: 1px solid transparent;
+  background-color: $color-cta-blue;
+  color: $color-white;
+}
+
+.about-hero-actions__button--secondary {
+  border: 1px solid $color-stroke-grey;
+  background-color: $color-white;
+  color: $color-hash-black;
+}
+
+.about-hero-actions__button:hover {
+  transform: translateY(-1px);
+}
+
+.about-hero-actions__button--primary:hover {
+  background-color: #24b7d7;
+}
+
+.about-hero-actions__button--secondary:hover {
+  background-color: #fafafa;
+}
+
+.about-hero-image-wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-top: 50px;
+  height: 434px;
+  overflow: hidden;
+  background-color: #f4fbfe;
+}
+
+.about-hero-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 1023px) {
+  .about-hero-container.container {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .about-hero-actions {
+    padding-top: 0;
+    align-items: flex-start;
+  }
+
+  .about-hero-actions__description {
+    text-align: left;
+  }
+
+  .about-hero-actions__buttons {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-hero-top {
+    padding-top: 8px;
+  }
+
+  .about-hero-copy {
+    padding-top: 42px;
+  }
+
+  .about-hero-copy__triangle {
+    left: 0;
+    width: 48px;
+    height: 48px;
+  }
+
+  .about-hero-copy__title {
+    font-size: 34px;
+    line-height: 1.18;
+  }
+
+  .about-hero-copy__flower {
+    margin-left: 120px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .about-hero-actions__description {
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .about-hero-actions__buttons {
+    width: 100%;
+  }
+
+  .about-hero-actions__button {
+    flex: 1 1 220px;
+    justify-content: center;
+  }
+
+  .about-hero-image-wrap {
+    margin-top: 36px;
+    height: 320px;
+  }
+}

@@ -1,0 +1,92 @@
+// 13 logos × (80px size + 60px gap) = 1820px for one set
+// Animation translates by exactly that amount to create seamless loop
+$logo-size: 80px;
+$logo-gap: 60px;
+$logo-count: 13;
+$track-width: ($logo-size + $logo-gap) * $logo-count;
+$animation-duration: 30s;
+
+@keyframes logo-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-scroll-section {
+  width: 100%;
+  background-color: $color-white;
+  padding: 40px 0;
+  overflow: hidden;
+  position: relative;
+
+  // Fade edges for a polished effect
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, $color-white 0%, transparent 100%);
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, $color-white 0%, transparent 100%);
+  }
+}
+
+.logo-scroll-track-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.logo-scroll-track {
+  display: flex;
+  align-items: center;
+  gap: $logo-gap;
+  width: max-content;
+  animation: logo-scroll $animation-duration linear infinite;
+
+  // Pause scroll on hover for accessibility / usability
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+.logo-scroll-item {
+  flex-shrink: 0;
+  width: $logo-size;
+  height: $logo-size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+// On mobile, slightly smaller logos and faster to keep it looking good
+@media (max-width: 768px) {
+  .logo-scroll-track {
+    gap: 40px;
+    animation-duration: 20s;
+  }
+
+  .logo-scroll-item {
+    width: 60px;
+    height: 60px;
+  }
+}

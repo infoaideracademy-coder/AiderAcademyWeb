@@ -1,0 +1,99 @@
+.why-aider-section-container-main {
+  width: 100%;
+  background-color: $color-white;
+  padding: 20px 0 60px;
+}
+
+.why-aider-section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 55px;
+}
+
+.why-aider-section__heading {
+  width: min(100%, 621px);
+}
+
+.why-aider-section__heading .section-heading__description {
+  max-width: 100%;
+  font-size: 15px;
+}
+
+.feature-cards-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px 41px;
+}
+
+.why-aider-feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  text-align: center;
+}
+
+.why-aider-feature-card__icon-wrap {
+  width: 71px;
+  height: 71px;
+  border-radius: 50%;
+  background-color: $color-cta-blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+  }
+}
+
+.why-aider-feature-card__copy {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.why-aider-feature-card__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: $color-black;
+}
+
+.why-aider-feature-card__description {
+  margin: 0;
+  font-family: "Poppins", $font-family-primary;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #666666;
+}
+
+@media (min-width: 640px) {
+  .feature-cards-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .feature-cards-container {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .why-aider-section-container-main {
+    padding: 20px 0 48px;
+  }
+
+  .why-aider-section-container {
+    gap: 44px;
+  }
+}
