@@ -35,18 +35,8 @@ export default function SiteHeader() {
   const mobileItemsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (!isMobileMenuOpen) {
-      return;
-    }
-
-    const frame = window.requestAnimationFrame(() => {
-      setIsMobileMenuOpen(false);
-    });
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-    };
-  }, [isMobileMenuOpen, pathname]);
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     if (typeof document === "undefined") {

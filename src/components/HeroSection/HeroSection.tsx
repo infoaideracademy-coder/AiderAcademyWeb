@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import TransitionLink from "@/components/AppShell/TransitionLink";
 import "./style.scss";
 
 const imgCtdsLogo11 = "/images/icons/CTDS%20Logo%20(1)%201.png";
@@ -93,8 +94,8 @@ const HeroSection = () => {
           </p>
           
           <div className="hero-ctas">
-            <button className="btn-explore">Explore Courses</button>
-            <button className="btn-advisor">Talk to an Advisor</button>
+            <TransitionLink href="/courses" className="btn-explore">Explore Courses</TransitionLink>
+            <TransitionLink href="/contact" className="btn-advisor">Talk to an Advisor</TransitionLink>
           </div>
           
           <div className="hero-contact-info">

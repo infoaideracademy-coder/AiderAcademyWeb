@@ -1,7 +1,6 @@
 import "./style.scss";
 
-const imgHero =
-  "https://www.figma.com/api/mcp/asset/208dd996-5770-4893-bc47-21ff79b14431";
+const imgHero = "/images/contact-hero-image.png";
 
 export default function ContactHero() {
   return (

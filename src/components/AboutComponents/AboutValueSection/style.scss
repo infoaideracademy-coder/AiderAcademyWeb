@@ -85,10 +85,11 @@
   aspect-ratio: 572 / 394;
   border-radius: 15px;
   overflow: hidden;
-  background-color: #e5a3a3;
+  background-color: transparent;
 }
 
 .about-value-section__image {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;

@@ -47,6 +47,9 @@ const CourseDetailTabs = ({ course }: CourseDetailTabsProps) => {
   const accordionInnerRefs = useRef<Array<HTMLDivElement | null>>([]);
   const accordionVerticalBarRefs = useRef<Array<HTMLSpanElement | null>>([]);
 
+  const hasTrainers = (course.trainers?.length ?? 0) > 0;
+  const filteredTabItems = tabItems.filter((item) => item.key !== "trainers" || hasTrainers);
+
   const updateIndicator = (section: SectionKey) => {
     const nav = navRef.current;
     const indicator = indicatorRef.current;
@@ -255,7 +258,7 @@ const CourseDetailTabs = ({ course }: CourseDetailTabsProps) => {
         }
       >
         <span className="course-detail-tabs-nav__indicator" ref={indicatorRef} aria-hidden="true" />
-        {tabItems.map((item) => (
+        {filteredTabItems.map((item) => (
           <button
             key={item.key}
             ref={(node) => {
@@ -381,45 +384,47 @@ const CourseDetailTabs = ({ course }: CourseDetailTabsProps) => {
         </div>
       </section>
 
-      <section
-        className="course-detail-panel"
-        id={sectionIds.trainers}
-        data-section-key="trainers"
-        ref={(node) => {
-          sectionRefs.current.trainers = node;
-        }}
-      >
-        <div className="course-detail-panel__header">
-          <p className="course-detail-panel__eyebrow">Meet the mentors</p>
-          <h2 className="course-detail-panel__title">Learn from people who build and review work every day</h2>
-        </div>
-        <div className="course-detail-trainers">
-                  {course.trainers.map((trainer) => (
-                    <article className="course-detail-trainer-card" key={trainer.name}>
-                      <div className="course-detail-trainer-card__media">
-                        <div className="course-detail-trainer-card__shape" />
-                        {trainer.image ? (
-                          <img
-                            src={urlForImage(trainer.image).width(500).height(500).fit("crop").url()}
-                            alt={trainer.image.alt || trainer.name}
-                          />
-                        ) : (
-                          <div className="course-detail-trainer-card__fallback" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" focusable="false">
-                              <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-3.314 0-6 2.239-6 5v1h12v-1c0-2.761-2.686-5-6-5Z" />
-                            </svg>
-                          </div>
-                        )}
-                      </div>
-              <div className="course-detail-trainer-card__content">
-                <h3>{trainer.name}</h3>
-                <p className="course-detail-trainer-card__role">{trainer.role}</p>
-                <p className="course-detail-trainer-card__bio">{trainer.bio}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      {hasTrainers && (
+        <section
+          className="course-detail-panel"
+          id={sectionIds.trainers}
+          data-section-key="trainers"
+          ref={(node) => {
+            sectionRefs.current.trainers = node;
+          }}
+        >
+          <div className="course-detail-panel__header">
+            <p className="course-detail-panel__eyebrow">Meet the mentors</p>
+            <h2 className="course-detail-panel__title">Learn from people who build and review work every day</h2>
+          </div>
+          <div className="course-detail-trainers">
+            {course.trainers?.map((trainer) => (
+              <article className="course-detail-trainer-card" key={trainer.name}>
+                <div className="course-detail-trainer-card__media">
+                  <div className="course-detail-trainer-card__shape" />
+                  {trainer.image ? (
+                    <img
+                      src={urlForImage(trainer.image).width(500).height(500).fit("crop").url()}
+                      alt={trainer.image.alt || trainer.name}
+                    />
+                  ) : (
+                    <div className="course-detail-trainer-card__fallback" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-3.314 0-6 2.239-6 5v1h12v-1c0-2.761-2.686-5-6-5Z" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+                <div className="course-detail-trainer-card__content">
+                  <h3>{trainer.name}</h3>
+                  <p className="course-detail-trainer-card__role">{trainer.role}</p>
+                  <p className="course-detail-trainer-card__bio">{trainer.bio}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="course-detail-panel course-detail-panel--form">
         <div className="course-detail-panel__header">

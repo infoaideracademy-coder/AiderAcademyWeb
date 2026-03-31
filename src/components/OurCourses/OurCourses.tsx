@@ -35,7 +35,7 @@ const OurCourses = async () => {
                   <div className="course-card__image-frame">
                     {imageUrl ? (
                       <img
-                        className={`course-card__image ${course.imageClassName}`}
+                        className="course-card__image"
                         src={imageUrl}
                         alt={course.alt}
                       />

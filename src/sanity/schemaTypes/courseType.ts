@@ -80,14 +80,6 @@ export const courseType = defineType({
       ],
     }),
     defineField({
-      name: "imageClassName",
-      title: "Image Class Name",
-      type: "string",
-      group: "listing",
-      initialValue: "course-card__image--graphic",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       name: "duration",
       title: "Duration Label",
       type: "string",
@@ -337,7 +329,6 @@ export const courseType = defineType({
           },
         }),
       ],
-      validation: (rule) => rule.required().min(1),
     }),
     defineField({
       name: "placementCopy",

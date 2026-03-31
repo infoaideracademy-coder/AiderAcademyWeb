@@ -1,7 +1,6 @@
 import "./style.scss";
 
-const imgStory =
-  "https://www.figma.com/api/mcp/asset/4cf9e8f6-25e0-4fb0-baac-591ba60415db";
+const imgStory = "/images/our-story.png";
 
 export default function AboutStorySection() {
   return (

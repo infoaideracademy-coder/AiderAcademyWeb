@@ -8,10 +8,8 @@ import CounterSection from "@/components/AboutComponents/CounterSection/CounterS
 import TestimoinalsSection from "@/components/TestimonialsSection/TestimoinalsSection";
 import "./style.scss";
 
-const imgVision =
-  "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80";
-const imgMission =
-  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80";
+const imgVision = "/images/vision.png";
+const imgMission = "/images/mission.png";
 
 export default function AboutPage() {
   return (

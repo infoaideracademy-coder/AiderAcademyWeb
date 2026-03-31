@@ -1,15 +1,13 @@
+import TransitionLink from "@/components/AppShell/TransitionLink";
 import "./style.scss";
 
-const imgGridPrimary =
-  "https://www.figma.com/api/mcp/asset/b123955b-0eef-4bca-bfc5-fd0c2c3ef016";
-const imgGridSecondary =
-  "https://www.figma.com/api/mcp/asset/7c8b5caa-7195-469b-9855-9deddc13e80e";
+const imgGridPrimary = "/images/hero-grid.png";
+const imgGridSecondary = "/images/hero-grid.png";
 const imgFlower =
   "https://www.figma.com/api/mcp/asset/e85bcd6e-bba5-4953-8ff5-3d030ae5c2df";
 const imgTriangle =
   "https://www.figma.com/api/mcp/asset/e0e6be40-ed77-4c7e-b5c6-23a2a6f2fe04";
-const imgHero =
-  "https://www.figma.com/api/mcp/asset/f72dbfde-41a5-49e1-99bd-4dd4280cb43c";
+const imgHero = "/images/about-hero.png";
 
 export default function AboutHero() {
   return (
@@ -59,18 +57,18 @@ export default function AboutHero() {
             </p>
 
             <div className="about-hero-actions__buttons">
-              <button
+              <TransitionLink
                 className="about-hero-actions__button about-hero-actions__button--primary"
-                type="button"
+                href="/courses"
               >
                 Explore Courses
-              </button>
-              <button
+              </TransitionLink>
+              <TransitionLink
                 className="about-hero-actions__button about-hero-actions__button--secondary"
-                type="button"
+                href="/contact"
               >
                 Talk to an Advisor
-              </button>
+              </TransitionLink>
             </div>
           </div>
         </div>

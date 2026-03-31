@@ -1,5 +1,5 @@
 import React from "react";
-import PrimaryButton from "@/components/PrimaryButton/PrimaryButton";
+import TransitionLink from "@/components/AppShell/TransitionLink";
 import "./style.scss";
 
 const BottomCtaSection = () => {
@@ -21,12 +21,18 @@ const BottomCtaSection = () => {
             </p>
 
             <div className="bottom-cta-panel__actions">
-              <PrimaryButton className="bottom-cta-panel__button" variant="dark">
+              <TransitionLink 
+                className="primary-button primary-button--dark bottom-cta-panel__button" 
+                href="/courses"
+              >
                 Explore Courses
-              </PrimaryButton>
-              <PrimaryButton className="bottom-cta-panel__button" variant="white">
+              </TransitionLink>
+              <TransitionLink 
+                className="primary-button primary-button--white bottom-cta-panel__button" 
+                href="/contact"
+              >
                 Talk to an Advisor
-              </PrimaryButton>
+              </TransitionLink>
             </div>
           </div>
         </div>
