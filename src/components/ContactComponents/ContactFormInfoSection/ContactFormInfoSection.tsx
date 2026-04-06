@@ -25,17 +25,17 @@ const contactItems = [
   {
     icon: imgEmail,
     title: "Email us",
-    value: "aideracademy@gmail.com",
+    value: "Info.aider.academy@gmail.com",
   },
   {
     icon: imgPhone,
     title: "Call us",
-    value: "+91 88888 88888",
+    value: "+91 96054 47374",
   },
   {
     icon: imgWhatsapp,
     title: "Whatsapp Us",
-    value: "+91 88888 88888",
+    value: "+91 96054 47374",
   },
   {
     icon: imgLocation,

@@ -22,16 +22,16 @@ const courseLinks = [
   { label: "Web Development", href: "/courses" },
 ];
 const contactItems = [
-  "support@example.com",
-  "+91 99999 99999",
+  "Info.aider.academy@gmail.com",
+  "+91 96054 47374",
   "Nadakkavu, Calicut",
 ];
 
 const socialLinks = [
-  { icon: imgFacebook, label: "Facebook" },
-  { icon: imgInstagram, label: "Instagram" },
-  { icon: imgLinkedIn, label: "LinkedIn" },
-  { icon: imgWhatsApp, label: "WhatsApp" },
+  { icon: imgFacebook, label: "Facebook", href: "https://www.facebook.com/profile.php?id=61574845930628" },
+  { icon: imgInstagram, label: "Instagram", href: "https://www.instagram.com/aider.academy?igsh=cXQzY2E3NWw0a3B1" },
+  { icon: imgLinkedIn, label: "LinkedIn", href: "#" },
+  { icon: imgWhatsApp, label: "WhatsApp", href: "#" },
 ];
 
 const Footer = () => {
@@ -45,7 +45,7 @@ const Footer = () => {
               {socialLinks.map((item) => (
                 <a
                   className="footer-section__social-link"
-                  href="#"
+                  href={item.href}
                   aria-label={item.label}
                   key={item.label}
                 >

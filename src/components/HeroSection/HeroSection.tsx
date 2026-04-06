@@ -110,7 +110,7 @@ const HeroSection = () => {
               </div>
               <div className="contact-text">
                 <span className="contact-label">Have any queries call us</span>
-                <span className="contact-number">+91 88888 88888</span>
+                <span className="contact-number">+91 96054 47374</span>
               </div>
             </div>
           </div>
