@@ -84,8 +84,8 @@ const HeroSection = () => {
       <div className="hero-section-container container">
         <div className="left-section content-section">
           <h1 className="hero-headline">
-            <span className="highlight-blue">Career-focused</span> training<br/>
-            for real-world <span className="highlight-blue highlight-blue--dark">digital roles.</span>
+            Learn <span className="highlight-blue">Digital Marketing.</span><br/>
+            Land Your <span className="highlight-blue highlight-blue--dark">Dream Job.</span>
           </h1>
           <p className="hero-description">
             CTDS certified academy with a GCC-centric curriculum,

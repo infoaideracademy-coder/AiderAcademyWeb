@@ -8,21 +8,21 @@ const imgIcon3 = "/images/icons/f-3.png";
 const pillars = [
   {
     icon: imgIcon1,
-    title: "CTDS-Certified Learning Path",
+    title: "100% Practical Training",
     description:
-      "Structured learning aligned to recognized standards, built to develop skills employers trust and clients value.",
+      "Live campaigns, real ad accounts, actual tools.",
   },
   {
     icon: imgIcon2,
-    title: "GCC-Centric Curriculum",
+    title: "Industry-Certified Instructors",
     description:
-      "Market-focused training shaped around GCC tools, workflows, and project practice that matches hiring expectations.",
+      "Trainers with 5+ years of hands-on experience.",
   },
   {
     icon: imgIcon3,
-    title: "Live Projects. Real Portfolios",
+    title: "Certificates That Matter",
     description:
-      "Hands-on assignments that mirror real roles, helping you graduate with a portfolio that proves capability.",
+      "Recognised by employers across India and beyond.",
   },
 ];
 

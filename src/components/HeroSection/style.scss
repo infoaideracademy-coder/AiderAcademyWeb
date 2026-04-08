@@ -59,6 +59,7 @@
     color: $color-white;
     padding: 0px 4px;
     display: inline-block;
+    margin-bottom: 6px;
   }
 
   .highlight-blue--dark {
@@ -81,7 +82,7 @@
   gap: 16px;
   align-items: center;
 
-  button {
+  a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -98,6 +99,7 @@
     transition: all 0.3s ease;
     border: none;
     outline: none;
+    text-decoration: none;
   }
 
   .btn-explore {
@@ -314,6 +316,73 @@
   }
 }
 
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .hero-section-container {
+    gap: 24px;
+  }
+
+  .left-section.content-section {
+    max-width: 500px;
+    gap: 26px;
+  }
+
+  .right-section.image-section {
+    max-width: 470px;
+  }
+
+  .hero-card-container {
+    max-width: 470px;
+    height: 420px;
+  }
+
+  .hero-image-mask {
+    top: 32px;
+    left: 28px;
+    width: calc(100% - 56px);
+    height: 278px;
+    border-radius: 30px;
+  }
+
+  .floating-badge {
+    .badge-text {
+      font-size: 14px;
+      padding-right: 10px;
+    }
+  }
+
+  .badge-graphic {
+    left: -20px;
+  }
+
+  .badge-digital {
+    top: 194px;
+    right: 10px;
+    transform: rotate(6deg);
+  }
+
+  .badge-web {
+    left: -20px;
+    bottom: 72px;
+  }
+
+  .bottom-highlight {
+    left: 28px;
+    right: 28px;
+    bottom: 24px;
+    gap: 12px;
+
+    .asterisk-circle {
+      width: 58px;
+      height: 58px;
+    }
+
+    .highlight-text {
+      font-size: 14px;
+      line-height: 1.35;
+    }
+  }
+}
+
 /* Enhancements for smaller devices */
 @media (max-width: 640px) {
   .hero-card-container {
@@ -324,12 +393,12 @@
     gap: 20px;
   }
   .badge-graphic {
-    left: -10px;
+    left: -4px;
   }
   .badge-digital {
-    right: -20px;
+    right: -8px;
   }
   .badge-web {
-    left: -10px;
+    left: -4px;
   }
 }
