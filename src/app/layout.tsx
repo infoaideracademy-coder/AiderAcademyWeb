@@ -5,6 +5,11 @@ import "./globals.scss";
 export const metadata: Metadata = {
   title: "Aider Academy | Practical Career Training for Digital Roles",
   description: "Join Aider Academy for mentor-led, project-driven training in Graphic Design, Digital Marketing, and Web Development. Build real skills, a professional portfolio, and get job-ready with our GCC-centric curriculum.",
+  icons: {
+    icon: "/images/aider-academy-logo.png",
+    shortcut: "/images/aider-academy-logo.png",
+    apple: "/images/aider-academy-logo.png",
+  },
 };
 
 export default function RootLayout({
