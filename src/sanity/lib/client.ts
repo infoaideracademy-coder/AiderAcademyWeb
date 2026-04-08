@@ -8,6 +8,6 @@ export const sanityClient = createClient({
   projectId: fallbackProjectId,
   dataset: fallbackDataset,
   apiVersion,
-  useCdn: true,
+  useCdn: false,
   perspective: "published",
 });

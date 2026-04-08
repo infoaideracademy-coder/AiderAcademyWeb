@@ -1,4 +1,3 @@
-import { cache } from "react";
 import { groq } from "next-sanity";
 import { hasRequiredSanityEnv } from "@/sanity/env";
 import { sanityClient } from "@/sanity/lib/client";
@@ -11,12 +10,20 @@ import type {
   Testimonial,
 } from "@/sanity/types";
 
-export const getTestimonials = cache(async (): Promise<Testimonial[]> => {
+const sanityFetchOptions = {
+  cache: "no-store" as const,
+};
+
+const fetchFromSanity = async <T>(query: string, params: Record<string, unknown> = {}): Promise<T> => {
+  return sanityClient.fetch<T>(query, params, sanityFetchOptions);
+};
+
+export async function getTestimonials(): Promise<Testimonial[]> {
   if (!hasRequiredSanityEnv) {
     return [];
   }
 
-  return sanityClient.fetch(
+  return fetchFromSanity<Testimonial[]>(
     groq`*[_type == "testimonial"] | order(coalesce(order, 0) asc, _createdAt desc) {
       _id,
       name,
@@ -26,21 +33,21 @@ export const getTestimonials = cache(async (): Promise<Testimonial[]> => {
       "order": coalesce(order, 0)
     }`
   );
-});
+}
 
-export const getPartnersSection = cache(async (): Promise<PartnersSection | null> => {
+export async function getPartnersSection(): Promise<PartnersSection | null> {
   if (!hasRequiredSanityEnv) {
     return null;
   }
 
-  return sanityClient.fetch(
+  return fetchFromSanity<PartnersSection | null>(
     groq`*[_type == "partnersSection"][0]{
       _id,
       title,
       logos
     }`
   );
-});
+}
 
 const blogCardProjection = `
   _id,
@@ -100,43 +107,43 @@ const courseDetailProjection = `
   seoNoIndex
 `;
 
-export const getAllBlogPosts = cache(async (): Promise<BlogPostCard[]> => {
+export async function getAllBlogPosts(): Promise<BlogPostCard[]> {
   if (!hasRequiredSanityEnv) {
     return [];
   }
 
-  return sanityClient.fetch(
+  return fetchFromSanity<BlogPostCard[]>(
     groq`*[_type == "blogPost" && defined(slug.current)] | order(coalesce(publishedAt, _createdAt) desc) {${blogCardProjection}}`
   );
-});
+}
 
-export const getLatestBlogPosts = cache(async (limit: number): Promise<BlogPostCard[]> => {
+export async function getLatestBlogPosts(limit: number): Promise<BlogPostCard[]> {
   if (!hasRequiredSanityEnv) {
     return [];
   }
 
-  return sanityClient.fetch(
+  return fetchFromSanity<BlogPostCard[]>(
     groq`*[_type == "blogPost" && defined(slug.current)] | order(coalesce(publishedAt, _createdAt) desc)[0...$limit] {${blogCardProjection}}`,
     { limit }
   );
-});
+}
 
-export const getAllBlogSlugs = cache(async (): Promise<string[]> => {
+export async function getAllBlogSlugs(): Promise<string[]> {
   if (!hasRequiredSanityEnv) {
     return [];
   }
 
-  return sanityClient.fetch(
+  return fetchFromSanity<string[]>(
     groq`*[_type == "blogPost" && defined(slug.current)] | order(coalesce(publishedAt, _createdAt) desc).slug.current`
   );
-});
+}
 
-export const getBlogPostBySlug = cache(async (slug: string): Promise<BlogPost | null> => {
+export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   if (!hasRequiredSanityEnv) {
     return null;
   }
 
-  return sanityClient.fetch(
+  return fetchFromSanity<BlogPost | null>(
     groq`*[_type == "blogPost" && slug.current == $slug][0]{
       ${blogCardProjection},
       body,
@@ -147,37 +154,35 @@ export const getBlogPostBySlug = cache(async (slug: string): Promise<BlogPost | 
     }`,
     { slug }
   );
-});
+}
 
-export const getRelatedBlogPosts = cache(
-  async (slug: string, limit: number): Promise<BlogPostCard[]> => {
-    if (!hasRequiredSanityEnv) {
-      return [];
-    }
-
-    return sanityClient.fetch(
-      groq`*[_type == "blogPost" && defined(slug.current) && slug.current != $slug] | order(coalesce(publishedAt, _createdAt) desc)[0...$limit] {${blogCardProjection}}`,
-      { slug, limit }
-    );
-  }
-);
-
-export const getAllCourses = cache(async (): Promise<CourseCard[]> => {
+export async function getRelatedBlogPosts(slug: string, limit: number): Promise<BlogPostCard[]> {
   if (!hasRequiredSanityEnv) {
     return [];
   }
 
-  return sanityClient.fetch(
+  return fetchFromSanity<BlogPostCard[]>(
+    groq`*[_type == "blogPost" && defined(slug.current) && slug.current != $slug] | order(coalesce(publishedAt, _createdAt) desc)[0...$limit] {${blogCardProjection}}`,
+    { slug, limit }
+  );
+}
+
+export async function getAllCourses(): Promise<CourseCard[]> {
+  if (!hasRequiredSanityEnv) {
+    return [];
+  }
+
+  return fetchFromSanity<CourseCard[]>(
     groq`*[_type == "course" && defined(slug.current)] | order(coalesce(orderRank, 9999) asc, _createdAt desc) {${courseCardProjection}}`
   );
-});
+}
 
-export const getHomepageCourses = cache(async (limit: number): Promise<CourseCard[]> => {
+export async function getHomepageCourses(limit: number): Promise<CourseCard[]> {
   if (!hasRequiredSanityEnv) {
     return [];
   }
 
-  const featured = await sanityClient.fetch(
+  const featured = await fetchFromSanity<CourseCard[]>(
     groq`*[_type == "course" && defined(slug.current) && showOnHomepage == true] | order(coalesce(orderRank, 9999) asc, _createdAt desc)[0...$limit] {${courseCardProjection}}`,
     { limit }
   );
@@ -186,29 +191,29 @@ export const getHomepageCourses = cache(async (limit: number): Promise<CourseCar
     return featured;
   }
 
-  return sanityClient.fetch(
+  return fetchFromSanity<CourseCard[]>(
     groq`*[_type == "course" && defined(slug.current)] | order(coalesce(orderRank, 9999) asc, _createdAt desc)[0...$limit] {${courseCardProjection}}`,
     { limit }
   );
-});
+}
 
-export const getAllCourseSlugs = cache(async (): Promise<string[]> => {
+export async function getAllCourseSlugs(): Promise<string[]> {
   if (!hasRequiredSanityEnv) {
     return [];
   }
 
-  return sanityClient.fetch(
+  return fetchFromSanity<string[]>(
     groq`*[_type == "course" && defined(slug.current)] | order(coalesce(orderRank, 9999) asc, _createdAt desc).slug.current`
   );
-});
+}
 
-export const getCourseBySlug = cache(async (slug: string): Promise<CourseDetail | null> => {
+export async function getCourseBySlug(slug: string): Promise<CourseDetail | null> {
   if (!hasRequiredSanityEnv) {
     return null;
   }
 
-  return sanityClient.fetch(
+  return fetchFromSanity<CourseDetail | null>(
     groq`*[_type == "course" && slug.current == $slug][0]{${courseDetailProjection}}`,
     { slug }
   );
-});
+}
