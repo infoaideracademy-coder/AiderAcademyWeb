@@ -199,11 +199,35 @@ export const courseType = defineType({
     }),
     defineField({
       name: "overviewParagraph",
-      title: "Overview Paragraph",
-      type: "text",
-      rows: 5,
+      title: "Overview Content",
+      type: "array",
       group: "details",
-      validation: (rule) => rule.required().min(40).max(420),
+      of: [
+        defineArrayMember({
+          type: "block",
+          styles: [{ title: "Normal", value: "normal" }],
+          lists: [{ title: "Bullet", value: "bullet" }],
+          marks: {
+            decorators: [
+              { title: "Strong", value: "strong" },
+              { title: "Emphasis", value: "em" },
+            ],
+            annotations: [],
+          },
+        }),
+        defineArrayMember({
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            defineField({
+              name: "alt",
+              title: "Alt Text",
+              type: "string",
+            }),
+          ],
+        }),
+      ],
+      validation: (rule) => rule.required().min(1),
     }),
     defineField({
       name: "outcomes",
@@ -244,7 +268,7 @@ export const courseType = defineType({
           },
         }),
       ],
-      validation: (rule) => rule.required().min(1),
+      validation: (rule) => rule.min(1),
     }),
     defineField({
       name: "featureColumns",
@@ -276,7 +300,7 @@ export const courseType = defineType({
           },
         }),
       ],
-      validation: (rule) => rule.required().min(1),
+      validation: (rule) => rule.min(1),
     }),
     defineField({
       name: "trainers",

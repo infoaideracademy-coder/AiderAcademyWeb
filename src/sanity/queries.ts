@@ -89,7 +89,7 @@ const courseDetailProjection = `
   "mode": coalesce(mode, ""),
   "enrolled": coalesce(enrolled, ""),
   "overviewTitle": coalesce(overviewTitle, "What you'll learn"),
-  "overviewParagraph": coalesce(overviewParagraph, ""),
+  "overviewParagraph": coalesce(overviewParagraph, []),
   "outcomes": coalesce(outcomes, []),
   "modules": coalesce(modules, []),
   "featureColumns": coalesce(featureColumns, []),

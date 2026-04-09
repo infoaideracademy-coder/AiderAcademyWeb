@@ -66,7 +66,7 @@ export type CourseDetail = CourseCard & {
   mode: string;
   enrolled: string;
   overviewTitle: string;
-  overviewParagraph: string;
+  overviewParagraph: TypedObject[] | string;
   outcomes: string[];
   modules: CourseModule[];
   featureColumns: CourseFeatureColumn[];

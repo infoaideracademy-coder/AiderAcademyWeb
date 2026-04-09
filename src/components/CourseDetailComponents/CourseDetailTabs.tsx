@@ -1,9 +1,11 @@
 "use client";
 
+import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import gsap from "gsap";
 import {
   useEffect,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -12,6 +14,33 @@ import type { CourseDetail } from "@/sanity/types";
 import "./style.scss";
 
 const imgTick = "/images/icons/who-can-join-tick.png";
+
+const overviewPortableTextComponents: PortableTextComponents = {
+  block: {
+    normal: ({ children }) => <p>{children}</p>,
+  },
+  list: {
+    bullet: ({ children }) => <ul>{children}</ul>,
+  },
+  listItem: {
+    bullet: ({ children }) => <li>{children}</li>,
+  },
+  types: {
+    image: ({ value }) => {
+      if (!value) {
+        return null;
+      }
+
+      const imageUrl = urlForImage(value).width(1400).fit("max").auto("format").url();
+
+      return (
+        <figure className="course-detail-panel__intro-media">
+          <img src={imageUrl} alt={value.alt || ""} />
+        </figure>
+      );
+    },
+  },
+};
 
 type CourseDetailTabsProps = {
   course: CourseDetail;
@@ -47,8 +76,63 @@ const CourseDetailTabs = ({ course }: CourseDetailTabsProps) => {
   const accordionInnerRefs = useRef<Array<HTMLDivElement | null>>([]);
   const accordionVerticalBarRefs = useRef<Array<HTMLSpanElement | null>>([]);
 
+  const hasModules = (course.modules?.length ?? 0) > 0;
+  const hasFeatureColumns = (course.featureColumns?.length ?? 0) > 0;
   const hasTrainers = (course.trainers?.length ?? 0) > 0;
-  const filteredTabItems = tabItems.filter((item) => item.key !== "trainers" || hasTrainers);
+  const overviewContent = useMemo(() => {
+    if (Array.isArray(course.overviewParagraph)) {
+      return course.overviewParagraph;
+    }
+
+    if (typeof course.overviewParagraph === "string" && course.overviewParagraph.trim().length > 0) {
+      return [
+        {
+          _type: "block",
+          _key: "legacy-overview",
+          style: "normal",
+          markDefs: [],
+          children: [
+            {
+              _type: "span",
+              _key: "legacy-overview-span",
+              text: course.overviewParagraph,
+              marks: [],
+            },
+          ],
+        },
+      ];
+    }
+
+    return [];
+  }, [course.overviewParagraph]);
+  const filteredTabItems = useMemo(
+    () =>
+      tabItems.filter((item) => {
+        if (item.key === "modules") {
+          return hasModules;
+        }
+
+        if (item.key === "features") {
+          return hasFeatureColumns;
+        }
+
+        if (item.key === "trainers") {
+          return hasTrainers;
+        }
+
+        return true;
+      }),
+    [hasModules, hasFeatureColumns, hasTrainers],
+  );
+  const resolvedActiveSection = useMemo<SectionKey>(() => {
+    const hasActiveSection = filteredTabItems.some((item) => item.key === activeSection);
+
+    if (hasActiveSection) {
+      return activeSection;
+    }
+
+    return filteredTabItems[0]?.key ?? "overview";
+  }, [activeSection, filteredTabItems]);
 
   const updateIndicator = (section: SectionKey) => {
     const nav = navRef.current;
@@ -68,15 +152,15 @@ const CourseDetailTabs = ({ course }: CourseDetailTabsProps) => {
   };
 
   useLayoutEffect(() => {
-    updateIndicator(activeSection);
+    updateIndicator(resolvedActiveSection);
 
-    const handleResize = () => updateIndicator(activeSection);
+    const handleResize = () => updateIndicator(resolvedActiveSection);
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [activeSection]);
+  }, [resolvedActiveSection]);
 
   useEffect(() => {
     const nav = navRef.current;
@@ -107,7 +191,7 @@ const CourseDetailTabs = ({ course }: CourseDetailTabsProps) => {
       },
     );
 
-    tabItems.forEach(({ key }) => {
+    filteredTabItems.forEach(({ key }) => {
       const section = sectionRefs.current[key];
 
       if (section) {
@@ -118,7 +202,7 @@ const CourseDetailTabs = ({ course }: CourseDetailTabsProps) => {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [filteredTabItems]);
 
   useEffect(() => {
     const updateStickyState = () => {
@@ -265,7 +349,7 @@ const CourseDetailTabs = ({ course }: CourseDetailTabsProps) => {
               tabRefs.current[item.key] = node;
             }}
             className={`course-detail-tabs-nav__item ${
-              activeSection === item.key ? "course-detail-tabs-nav__item--active" : ""
+              resolvedActiveSection === item.key ? "course-detail-tabs-nav__item--active" : ""
             }`.trim()}
             type="button"
             onClick={() => scrollToSection(item.key)}
@@ -287,7 +371,9 @@ const CourseDetailTabs = ({ course }: CourseDetailTabsProps) => {
           <p className="course-detail-panel__eyebrow">{course.tag}</p>
           <h2 className="course-detail-panel__title">{course.overviewTitle}</h2>
         </div>
-        <p className="course-detail-panel__intro">{course.overviewParagraph}</p>
+        <div className="course-detail-panel__intro-rich">
+          <PortableText value={overviewContent} components={overviewPortableTextComponents} />
+        </div>
         <div className="course-detail-outcomes">
           {course.outcomes.map((item) => (
             <div className="course-detail-outcomes__item" key={item}>
@@ -298,91 +384,95 @@ const CourseDetailTabs = ({ course }: CourseDetailTabsProps) => {
         </div>
       </section>
 
-      <section
-        className="course-detail-panel"
-        id={sectionIds.modules}
-        data-section-key="modules"
-        ref={(node) => {
-          sectionRefs.current.modules = node;
-        }}
-      >
-        <div className="course-detail-panel__header">
-          <p className="course-detail-panel__eyebrow">Course Content</p>
-          <h2 className="course-detail-panel__title">Modules that build real skill</h2>
-        </div>
-        <div className="course-detail-accordion">
-          {course.modules.map((module, index) => {
-            const isOpen = openModuleIndex === index;
-            return (
-              <div className="course-detail-accordion__item" key={module.title}>
-                <button
-                  className={`course-detail-accordion__trigger ${
-                    isOpen ? "course-detail-accordion__trigger--active" : ""
-                  }`.trim()}
-                  type="button"
-                  onClick={() => setOpenModuleIndex(isOpen ? -1 : index)}
-                >
-                  <span>{module.title}</span>
-                  <span className="course-detail-accordion__icon" aria-hidden="true">
-                    <span className="course-detail-accordion__icon-bar course-detail-accordion__icon-bar--horizontal" />
-                    <span
-                      className="course-detail-accordion__icon-bar course-detail-accordion__icon-bar--vertical"
-                      ref={(node) => {
-                        accordionVerticalBarRefs.current[index] = node;
-                      }}
-                    />
-                  </span>
-                </button>
-                <div
-                  className="course-detail-accordion__content"
-                  ref={(node) => {
-                    accordionContentRefs.current[index] = node;
-                  }}
-                >
+      {hasModules && (
+        <section
+          className="course-detail-panel"
+          id={sectionIds.modules}
+          data-section-key="modules"
+          ref={(node) => {
+            sectionRefs.current.modules = node;
+          }}
+        >
+          <div className="course-detail-panel__header">
+            <p className="course-detail-panel__eyebrow">Course Content</p>
+            <h2 className="course-detail-panel__title">Modules that build real skill</h2>
+          </div>
+          <div className="course-detail-accordion">
+            {course.modules.map((module, index) => {
+              const isOpen = openModuleIndex === index;
+              return (
+                <div className="course-detail-accordion__item" key={module.title}>
+                  <button
+                    className={`course-detail-accordion__trigger ${
+                      isOpen ? "course-detail-accordion__trigger--active" : ""
+                    }`.trim()}
+                    type="button"
+                    onClick={() => setOpenModuleIndex(isOpen ? -1 : index)}
+                  >
+                    <span>{module.title}</span>
+                    <span className="course-detail-accordion__icon" aria-hidden="true">
+                      <span className="course-detail-accordion__icon-bar course-detail-accordion__icon-bar--horizontal" />
+                      <span
+                        className="course-detail-accordion__icon-bar course-detail-accordion__icon-bar--vertical"
+                        ref={(node) => {
+                          accordionVerticalBarRefs.current[index] = node;
+                        }}
+                      />
+                    </span>
+                  </button>
                   <div
-                    className="course-detail-accordion__content-inner"
+                    className="course-detail-accordion__content"
                     ref={(node) => {
-                      accordionInnerRefs.current[index] = node;
+                      accordionContentRefs.current[index] = node;
                     }}
                   >
-                    <p>{module.summary}</p>
+                    <div
+                      className="course-detail-accordion__content-inner"
+                      ref={(node) => {
+                        accordionInnerRefs.current[index] = node;
+                      }}
+                    >
+                      <p>{module.summary}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
-      <section
-        className="course-detail-panel"
-        id={sectionIds.features}
-        data-section-key="features"
-        ref={(node) => {
-          sectionRefs.current.features = node;
-        }}
-      >
-        <div className="course-detail-panel__header">
-          <p className="course-detail-panel__eyebrow">Why this program works</p>
-          <h2 className="course-detail-panel__title">Built for practice, clarity, and confidence</h2>
-        </div>
-        <div className="course-detail-feature-columns">
-          {course.featureColumns.map((column) => (
-            <div className="course-detail-feature-column" key={column.title}>
-              <h3>{column.title}</h3>
-              <div className="course-detail-feature-column__divider" />
-              <ul>
-                {column.items.map((item) => (
-                  <li key={item}>
-                    <img src={imgTick} alt="" aria-hidden="true" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
+      {hasFeatureColumns && (
+        <section
+          className="course-detail-panel"
+          id={sectionIds.features}
+          data-section-key="features"
+          ref={(node) => {
+            sectionRefs.current.features = node;
+          }}
+        >
+          <div className="course-detail-panel__header">
+            <p className="course-detail-panel__eyebrow">Why this program works</p>
+            <h2 className="course-detail-panel__title">Built for practice, clarity, and confidence</h2>
+          </div>
+          <div className="course-detail-feature-columns">
+            {course.featureColumns.map((column) => (
+              <div className="course-detail-feature-column" key={column.title}>
+                <h3>{column.title}</h3>
+                <div className="course-detail-feature-column__divider" />
+                <ul>
+                  {column.items.map((item) => (
+                    <li key={item}>
+                      <img src={imgTick} alt="" aria-hidden="true" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {hasTrainers && (
         <section

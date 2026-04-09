@@ -513,12 +513,49 @@
   color: $color-hash-black;
 }
 
-.course-detail-panel__intro {
-  margin: 18px 0 0;
-  font-family: "Poppins", $font-family-primary;
-  font-size: 16px;
-  line-height: 1.85;
+.course-detail-panel__intro-rich {
+  margin-top: 18px;
   color: #657278;
+
+  p,
+  li {
+    margin: 0;
+    font-family: "Poppins", $font-family-primary;
+    font-size: 16px;
+    line-height: 1.85;
+    color: #657278;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  p + p,
+  p + ul,
+  ul + p,
+  ul + ul {
+    margin-top: 12px;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 10px;
+  }
+}
+
+.course-detail-panel__intro-media {
+  margin: 18px 0 0;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #e6f1f4;
+  background-color: #f9fdff;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
 }
 
 .course-detail-outcomes {
@@ -878,6 +915,14 @@
 
   .course-detail-panel__title {
     font-size: 28px;
+  }
+
+  .course-detail-panel__intro-rich {
+    p,
+    li {
+      font-size: 15px;
+      line-height: 1.75;
+    }
   }
 
   .course-detail-accordion__trigger {
