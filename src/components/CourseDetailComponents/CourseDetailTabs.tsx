@@ -17,13 +17,18 @@ const imgTick = "/images/icons/who-can-join-tick.png";
 
 const overviewPortableTextComponents: PortableTextComponents = {
   block: {
-    normal: ({ children }) => <p>{children}</p>,
+    normal: ({ children }) => <p className="course-detail-panel__intro-paragraph">{children}</p>,
+    h2: ({ children }) => <h2 className="course-detail-panel__intro-heading course-detail-panel__intro-heading--h2">{children}</h2>,
+    h3: ({ children }) => <h3 className="course-detail-panel__intro-heading course-detail-panel__intro-heading--h3">{children}</h3>,
+    blockquote: ({ children }) => <blockquote className="course-detail-panel__intro-quote">{children}</blockquote>,
   },
   list: {
-    bullet: ({ children }) => <ul>{children}</ul>,
+    bullet: ({ children }) => <ul className="course-detail-panel__intro-list">{children}</ul>,
+    number: ({ children }) => <ol className="course-detail-panel__intro-ordered-list">{children}</ol>,
   },
   listItem: {
-    bullet: ({ children }) => <li>{children}</li>,
+    bullet: ({ children }) => <li className="course-detail-panel__intro-list-item">{children}</li>,
+    number: ({ children }) => <li className="course-detail-panel__intro-list-item">{children}</li>,
   },
   types: {
     image: ({ value }) => {
@@ -39,6 +44,28 @@ const overviewPortableTextComponents: PortableTextComponents = {
         </figure>
       );
     },
+  },
+  marks: {
+    link: ({ children, value }) => {
+      const href = value?.href;
+      const openInNewTab = Boolean(value?.openInNewTab);
+
+      if (!href) {
+        return <>{children}</>;
+      }
+
+      return (
+        <a
+          className="course-detail-panel__intro-link"
+          href={href}
+          target={openInNewTab ? "_blank" : undefined}
+          rel={openInNewTab ? "noreferrer" : undefined}
+        >
+          {children}
+        </a>
+      );
+    },
+    code: ({ children }) => <code className="course-detail-panel__intro-code">{children}</code>,
   },
 };
 

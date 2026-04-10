@@ -518,7 +518,8 @@
   color: #657278;
 
   p,
-  li {
+  li,
+  blockquote {
     margin: 0;
     font-family: "Poppins", $font-family-primary;
     font-size: 16px;
@@ -530,17 +531,76 @@
 
   p + p,
   p + ul,
+  p + ol,
   ul + p,
-  ul + ul {
+  ol + p,
+  ul + ul,
+  ol + ol,
+  ul + ol,
+  ol + ul,
+  p + blockquote,
+  blockquote + p,
+  blockquote + ul,
+  blockquote + ol,
+  blockquote + blockquote {
     margin-top: 12px;
   }
 
-  ul {
+  ul,
+  ol {
     margin: 0;
     padding-left: 1.2rem;
     display: grid;
     gap: 10px;
   }
+}
+
+.course-detail-panel__intro-paragraph {
+  margin: 0;
+}
+
+.course-detail-panel__intro-heading {
+  margin: 0;
+  color: $color-hash-black;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.course-detail-panel__intro-heading--h2 {
+  font-size: 28px;
+}
+
+.course-detail-panel__intro-heading--h3 {
+  font-size: 22px;
+}
+
+.course-detail-panel__intro-quote {
+  margin: 0;
+  padding: 12px 16px;
+  border-left: 4px solid #31c2e1;
+  border-radius: 0 12px 12px 0;
+  background-color: #f4fbfe;
+  font-style: italic;
+}
+
+.course-detail-panel__intro-link {
+  color: #0f95b5;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  &:hover {
+    color: #0a7f9a;
+  }
+}
+
+.course-detail-panel__intro-code {
+  padding: 0.08em 0.38em;
+  border-radius: 6px;
+  background-color: #eef6f9;
+  border: 1px solid #d9e9ee;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.92em;
+  color: #31444b;
 }
 
 .course-detail-panel__intro-media {
@@ -919,10 +979,19 @@
 
   .course-detail-panel__intro-rich {
     p,
-    li {
+    li,
+    blockquote {
       font-size: 15px;
       line-height: 1.75;
     }
+  }
+
+  .course-detail-panel__intro-heading--h2 {
+    font-size: 23px;
+  }
+
+  .course-detail-panel__intro-heading--h3 {
+    font-size: 19px;
   }
 
   .course-detail-accordion__trigger {
