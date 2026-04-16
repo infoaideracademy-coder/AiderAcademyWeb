@@ -159,7 +159,7 @@ export const courseType = defineType({
       type: "text",
       rows: 3,
       group: "hero",
-      validation: (rule) => rule.required().min(10).max(180),
+      validation: (rule) => rule.max(180),
     }),
     defineField({
       name: "sessionDuration",
@@ -178,13 +178,6 @@ export const courseType = defineType({
     defineField({
       name: "mode",
       title: "Mode",
-      type: "string",
-      group: "details",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "enrolled",
-      title: "Enrolled Label",
       type: "string",
       group: "details",
       validation: (rule) => rule.required(),

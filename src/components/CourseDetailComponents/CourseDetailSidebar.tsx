@@ -138,10 +138,6 @@ const CourseDetailSidebar = ({ course }: CourseDetailSidebarProps) => {
             <span className="course-detail-sidebar__row-label">Mode</span>
             <span className="course-detail-sidebar__row-value">{course.mode}</span>
           </div>
-          <div className="course-detail-sidebar__row">
-            <span className="course-detail-sidebar__row-label">Enrolled</span>
-            <span className="course-detail-sidebar__row-value">{course.enrolled}</span>
-          </div>
         </div>
 
         <div className="course-detail-sidebar__support">

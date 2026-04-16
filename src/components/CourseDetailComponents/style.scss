@@ -423,8 +423,8 @@
   align-self: flex-start;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  padding: 10px;
+  gap: 8px;
+  padding: 7px;
   border: 1px solid #dcecf0;
   border-radius: 999px;
   background-color: rgba(255, 255, 255, 0.9);
@@ -448,10 +448,10 @@
 
 .course-detail-tabs-nav__indicator {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  width: calc(25% - 7.5px);
-  height: calc(100% - 20px);
+  top: 7px;
+  left: 7px;
+  width: calc(25% - 5.25px);
+  height: calc(100% - 14px);
   border-radius: 999px;
   background: linear-gradient(135deg, #31c2e1 0%, #52cce7 100%);
   box-shadow: 0 14px 24px rgba(49, 194, 225, 0.24);
@@ -463,14 +463,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
+  min-height: 40px;
   position: relative;
   z-index: 1;
   border: none;
   border-radius: 999px;
   background: transparent;
   font-family: "Poppins", $font-family-primary;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: #617075;
   cursor: pointer;
