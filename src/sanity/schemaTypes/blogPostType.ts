@@ -119,7 +119,7 @@ export const blogPostType = defineType({
       title: "SEO Description",
       type: "text",
       rows: 3,
-      validation: (rule) => rule.max(160),
+      validation: (rule) => rule.max(300),
     }),
     defineField({
       name: "seoImage",
