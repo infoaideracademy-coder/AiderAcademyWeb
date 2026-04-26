@@ -30,7 +30,6 @@ const contactItems = [
 const socialLinks = [
   { icon: imgFacebook, label: "Facebook", href: "https://www.facebook.com/profile.php?id=61574845930628" },
   { icon: imgInstagram, label: "Instagram", href: "https://www.instagram.com/aider.academy?igsh=cXQzY2E3NWw0a3B1" },
-  { icon: imgLinkedIn, label: "LinkedIn", href: "#" },
   { icon: imgWhatsApp, label: "WhatsApp", href: "#" },
 ];
 

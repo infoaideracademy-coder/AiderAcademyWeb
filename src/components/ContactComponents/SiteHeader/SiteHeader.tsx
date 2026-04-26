@@ -24,7 +24,6 @@ const navigationItems = [
 const socialItems = [
   { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61574845930628", icon: imgFacebook },
   { label: "Instagram", href: "https://www.instagram.com/aider.academy?igsh=cXQzY2E3NWw0a3B1", icon: imgInstagram },
-  { label: "LinkedIn", href: "#", icon: imgLinkedIn },
   { label: "WhatsApp", href: "#", icon: imgWhatsApp },
 ];
 

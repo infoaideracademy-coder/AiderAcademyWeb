@@ -148,30 +148,15 @@ const CourseDetailSidebar = ({ course }: CourseDetailSidebarProps) => {
             </span>
             <span className="course-detail-sidebar__button-text">Call Us: {course.callNumber}</span>
           </a>
-          {brochureHref ? (
-            <a
-              className="primary-button primary-button--primary course-detail-sidebar__brochure"
-              href={brochureHref}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span className="course-detail-sidebar__button-icon course-detail-sidebar__button-icon--solid course-detail-sidebar__button-icon--download">
-                <img src={imgArrowIcon} alt="" aria-hidden="true" />
-              </span>
-              <span className="course-detail-sidebar__button-text">Download Brochure</span>
-            </a>
-          ) : (
-            <button
-              className="primary-button primary-button--primary course-detail-sidebar__brochure"
-              type="button"
-              disabled
-            >
-              <span className="course-detail-sidebar__button-icon course-detail-sidebar__button-icon--solid course-detail-sidebar__button-icon--download">
-                <img src={imgArrowIcon} alt="" aria-hidden="true" />
-              </span>
-              <span className="course-detail-sidebar__button-text">Download Brochure</span>
-            </button>
-          )}
+          <a
+            className="primary-button primary-button--primary course-detail-sidebar__brochure"
+            href="/contact"
+          >
+            <span className="course-detail-sidebar__button-icon course-detail-sidebar__button-icon--solid course-detail-sidebar__button-icon--download">
+              <img src={imgArrowIcon} alt="" aria-hidden="true" />
+            </span>
+            <span className="course-detail-sidebar__button-text">download brochure</span>
+          </a>
         </div>
       </div>
     </aside>
